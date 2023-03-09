@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myingress
+  labels:
+    name: myingress
+spec:
+  rules:
+  - host:
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: web-service
+            port: 
+              number: 80
+      - path: /health       
+        pathType: Prefix
+        backend:
+           service:  
+            name: web-service
+            port:
+              number: 80
+      - path: /details       
+        pathType: Prefix
+        backend:
+           service:  
+            name: web-service
+            port:
+              number: 80
