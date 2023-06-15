@@ -2,9 +2,9 @@ pipeline {
     agent any
     environment {
         PROJECT_ID = 'automatic-bond-378717'
-        CLUSTER_NAME = 'my-k8s-cluster'
-        LOCATION = 'us-central1-a'
-        CREDENTIALS_ID = 'gke'
+        CLUSTER_NAME = 'cluster-1'
+        LOCATION = 'us-central1-c'
+        CREDENTIALS_ID = 'My Project 33067'
     }
     stages {
         stage("Checkout code") {
@@ -22,7 +22,7 @@ pipeline {
         stage("Push image") {
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                    docker.withRegistry('https://us.gcr.io', 'My Project 33067') {
                             myapp.push("latest")
                             myapp.push("${env.BUILD_ID}")
                     }
