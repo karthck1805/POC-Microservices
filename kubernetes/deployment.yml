@@ -17,6 +17,7 @@ spec:
       containers:
       - name: webapp
         image: karthick1911/webapp:2.0
-        imagePullPolicy: Never
+        #image: us-east5-docker.pkg.dev/asi-everest-prod/asi-docker-images/demoimage:demoimage
+        imagePullPolicy: Always
         ports:
           - containerPort: 5000
